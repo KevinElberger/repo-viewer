@@ -1,16 +1,25 @@
-# Repo Viewer
+# repo-viewer
 
-A web application that generates profilesf or Github repositories
+> A web application that generates profiles for Github repositories
 
 ## Build Setup
 
-```bash
+``` bash
+# install dependencies
+npm install
 
-# Run in development mode, serves on localhost:3000
-npm start
+# serve with hot reload at localhost:8080
+npm run dev
 
-# Build for production
+# build for production with minification
 npm run build
 
-# Run tests
+# build for production and view the bundle analyzer report
+npm run build --report
+
+# run unit tests
+npm run unit
+
+# run all tests
 npm test
+```
