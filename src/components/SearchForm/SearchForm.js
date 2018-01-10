@@ -26,7 +26,7 @@ class SearchForm extends Component {
         <form action="" onSubmit={this.handleSubmit}>
           <input 
             type="text" 
-            placeholder="Search for a repository"
+            placeholder="Search for a GitHub user"
             value={this.state.value}
             onChange={this.handleChange} 
           />

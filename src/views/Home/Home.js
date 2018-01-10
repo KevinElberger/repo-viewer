@@ -3,6 +3,7 @@ import './home.css';
 import Loader from '../../components/Loader/Loader';
 import Footer from '../../components/Footer/Footer';
 import SearchForm from '../../components/SearchForm/SearchForm';
+import Result from '../../components/Result/Result';
 
 class Home extends Component {
   constructor(props) {
@@ -14,14 +15,18 @@ class Home extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(value) {
+  handleSubmit(name) {
     this.setState({ loading: true });
-    const apiRootUrl = 'https://api.github.com/search/repositories?q=';
-    fetch(`${apiRootUrl}${value}`)
+    const apiRootUrl = 'https://api.github.com/users/';
+    fetch(`${apiRootUrl}${name}/repos`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        //this.setState({ loading: false, repos: response.json() });
+        if (data.length > 0) {
+          this.setState({ loading: false, repos: data });
+          this.props.resize();
+        } else {
+          this.setState({ loading: false });
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -30,11 +35,15 @@ class Home extends Component {
 
   render() {
     const loading = this.state.loading;
+    const hasData = this.state.repos.length > 0;
 
     return (
       <div className="home">
         <h1 className="title">Repo Viewer</h1>
-        {loading ? <Loader /> : <SearchForm onSubmit={this.handleSubmit} />}
+        {
+          loading ? <Loader /> : 
+          hasData ? <Result repos={this.state.repos} /> : <SearchForm onSubmit={this.handleSubmit} />
+        }
         <Footer />
       </div>
     );

@@ -9,7 +9,7 @@ class Footer extends Component {
                     Developed By Kevin Elberger | 
                 </p>
                 <a 
-                    className="github" 
+                    className="github"
                     href="https://www.github.com/KevinElberger/repo-viewer"
                 >
                     <i className="fa fa-github"></i>
