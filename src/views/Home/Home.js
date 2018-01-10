@@ -16,10 +16,12 @@ class Home extends Component {
 
   handleSubmit(value) {
     this.setState({ loading: true });
-    const apiRootUrl = 'https://api.github.com/';
+    const apiRootUrl = 'https://api.github.com/search/repositories?q=';
     fetch(`${apiRootUrl}${value}`)
-      .then(response => {
-        this.setState({ loading: false, repos: response.json() });
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        //this.setState({ loading: false, repos: response.json() });
       })
       .catch((error) => {
         console.log(error);
@@ -29,12 +31,10 @@ class Home extends Component {
   render() {
     const loading = this.state.loading;
 
-    /* {loading ? <Loader /> : <SearchForm onSubmit={this.handleSubmit} />} */
-
     return (
       <div className="home">
         <h1 className="title">Repo Viewer</h1>
-        <Loader />
+        {loading ? <Loader /> : <SearchForm onSubmit={this.handleSubmit} />}
         <Footer />
       </div>
     );
