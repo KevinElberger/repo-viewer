@@ -3,7 +3,7 @@ import './home.css';
 import Loader from '../../components/Loader/Loader';
 import Footer from '../../components/Footer/Footer';
 import SearchForm from '../../components/SearchForm/SearchForm';
-import Result from '../../components/Result/Result';
+import ResultContainer from '../../components/ResultContainer/ResultContainer';
 
 class Home extends Component {
   constructor(props) {
@@ -22,6 +22,7 @@ class Home extends Component {
       .then((response) => response.json())
       .then((data) => {
         if (data.length > 0) {
+          console.log(data);
           this.setState({ loading: false, repos: data });
           this.props.resize();
         } else {
@@ -42,7 +43,8 @@ class Home extends Component {
         <h1 className="title">Repo Viewer</h1>
         {
           loading ? <Loader /> : 
-          hasData ? <Result repos={this.state.repos} /> : <SearchForm onSubmit={this.handleSubmit} />
+          hasData ? <ResultContainer repos={this.state.repos} /> : 
+          <SearchForm onSubmit={this.handleSubmit} />
         }
         <Footer />
       </div>

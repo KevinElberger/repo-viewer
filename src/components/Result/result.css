@@ -2,6 +2,7 @@
     width: 100%;
     height: 100px;
     display: flex;
+    flex-wrap: wrap;
     align-self: flex-start;
     justify-content: center;
 }
@@ -11,13 +12,149 @@
     height: 100px;
 }
 
-.result {
-    width: 100%;
-    height: 60%;
+.chart[data-percent='100'] .outer {
+    stroke-dashoffset: 0;
+    -webkit-animation: show100 2s;
+    animation: show100 2s;
+}
+  
+.chart[data-percent='75'] .outer {
+    stroke-dashoffset: 133;
+    -webkit-animation: show75 2s;
+    animation: show75 2s;
+}
+  
+.chart[data-percent='50'] .outer {
+    stroke-dashoffset: 267;
+    -webkit-animation: show50 2s;
+    animation: show50 2s;
+}
+  
+.chart[data-percent='25'] .outer {
+    stroke-dashoffset: 401;
+    -webkit-animation: show25 2s;
+    animation: show25 2s;
+}
+
+.most-recent, .most-starred {
+    width: 45%;
+    height: 100%;
+    margin: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.outer {
+    stroke-width: 4;
+    fill: transparent;
+    /* stroke: #37d7da; */
+    stroke-dasharray: 534;
+    transition: stroke-dashoffset 1.5s;
+    
+    /* firefox bug fix - won't rotate at 90deg angles */
+    -moz-transform: rotate(-89deg) translateX(-190px);
+  }
+
+.result-text {
     color: #fff;
+    font-size: 12px;
+    flex-direction: row;
+    text-transform: uppercase;
+}
+
+.row {
+    height: 50%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    align-content: center;
+    flex-direction: row;
     justify-content: center;
 }
+
+.wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+@-webkit-keyframes show100 {
+    from {
+      stroke-dashoffset: 537;
+    }
+    
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  @keyframes show100 {
+    from {
+      stroke-dashoffset: 537;
+    }
+    
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  @-webkit-keyframes show75 {
+    from {
+      stroke-dashoffset: 537;
+    }
+    
+    to {
+      stroke-dashoffset: 134;
+    }
+  }
+  
+  @keyframes show75 {
+    from {
+      stroke-dashoffset: 537;
+    }
+    
+    to {
+      stroke-dashoffset: 124;
+    }
+  }
+  
+  @-webkit-keyframes show50 {
+    from {
+      stroke-dashoffset: 537;
+    }
+    
+    to {
+      stroke-dashoffset: 267;
+    }
+  }
+  
+  @keyframes show50 {
+    from {
+      stroke-dashoffset: 537;
+    }
+    
+    to {
+      stroke-dashoffset: 267;
+    }
+  }
+  
+  @-webkit-keyframes show25 {
+    from {
+      stroke-dashoffset: 537;
+    }
+    
+    to {
+      stroke-dashoffset: 401;
+    }
+  }
+  
+  @keyframes show25 {
+    from {
+      stroke-dashoffset: 537;
+    }
+    
+    to {
+      stroke-dashoffset: 401;
+    }
+  }

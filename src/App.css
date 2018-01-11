@@ -16,10 +16,10 @@
   flex-wrap: wrap;
   text-align: center;
   border-radius: 8px;
-  transition: all 1.5s;
   align-content: center;
   justify-content: center;
   background-color: #27273f;
+  transition: all 1s ease-out;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
