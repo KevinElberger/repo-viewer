@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import CountUp from 'react-countup';
 import './result.css';
 
 class Result extends Component {
   render() {
     const avatar = this.props.data.avatar;
+    const mostStars = this.props.data.mostStars;
+    const mostRecent = this.props.data.mostRecent;
 
     return (
       <div className="result">
@@ -12,18 +15,14 @@ class Result extends Component {
         </div>
         <div className="row">
           <div className="most-starred">
+            <p className="result-text">
+              Most Starred
+            </p>
             <div className="wrap">
               <figure className="chart" data-percent="100">
                 <svg width="120" height="120">
-                  <defs>
-                    <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%"   stopColor="#fc00ff"/>
-                      <stop offset="100%" stopColor="#00dbde"/>
-                    </linearGradient>
-                  </defs>
                   <circle 
                       className="outer"
-                      stroke="url(#linear)" 
                       cx="130" 
                       cy="60" 
                       r="40" 
@@ -31,18 +30,27 @@ class Result extends Component {
                   />
                 </svg>
               </figure>
+              <p className="stat">
+                <CountUp
+                  start={0}
+                  end={Number(mostStars.stargazers_count)}
+                  duration={1.5}
+                />
+              </p>
             </div>
-            <p className="result-text">
-              Most Starred
+            <p className="result-footer-text">
+              Stars
             </p>
           </div>
           <div className="most-recent">
+            <p className="result-text">
+              Most Recently Active
+            </p>
             <div className="wrap">
               <figure className="chart" data-percent="100">
                 <svg width="120" height="120">
                 <circle 
                     className="outer"
-                    stroke="url(#linear)" 
                     cx="130" 
                     cy="60" 
                     r="40" 
@@ -50,9 +58,16 @@ class Result extends Component {
                 />
                 </svg>
               </figure>
+              <p className="stat">
+                <CountUp
+                    start={0}
+                    end={Number(mostRecent.daysAgo)}
+                    duration={1.5}
+                />
+              </p>
             </div>
-            <p className="result-text">
-              Most Recent
+            <p className="result-footer-text">
+              Days Ago
             </p>
           </div>
         </div>

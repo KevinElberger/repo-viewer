@@ -5,7 +5,6 @@ import Result from '../Result/Result';
 class ResultContainer extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
       result: null,
       data: this.props.repos
@@ -50,9 +49,17 @@ class ResultContainer extends Component {
   }
 
   getRepoWithMostRecentDate() {
-    return new Date(Math.max.apply(null, this.state.data.map((repo) => {
+    const oneDay = 86400000;
+    const today = new Date();
+    const mostRecent = new Date(Math.max.apply(null, this.state.data.map((repo) => {
       return new Date(repo.updated_at);
     })));
+    const daysAgo = Math.floor((today - mostRecent) / oneDay);
+
+    return {
+      daysAgo,
+      mostRecent
+    }
   }
 
   getRepoWithLargestSize() {
