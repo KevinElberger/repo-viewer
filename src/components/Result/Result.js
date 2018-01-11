@@ -131,6 +131,9 @@ class Result extends Component {
           </div>
         </div>
 
+        <div className="row">
+
+        </div>
       </div>
     );
   }
