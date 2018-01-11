@@ -36,17 +36,20 @@
     animation: show25 2s;
 }
 
-.most-recent, .most-starred {
-    width: 45%;
+.most-recent, .most-starred, .most-issues, .largest-size {
+    width: 24%;
     height: 100%;
-    margin: 10px;
+    margin: 0;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     transition: all .5s ease-in-out;
 }
 
-.most-recent:hover, .most-starred:hover {
+.most-recent:hover, 
+.most-starred:hover, 
+.most-issues:hover, 
+.largest-size:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
@@ -56,6 +59,14 @@
 
 .most-starred .outer {
   stroke: #fc00ff;
+}
+
+.largest-size .outer {
+    stroke: #b547ef;
+}
+
+.most-issues .outer {
+    stroke: #6f98e4;
 }
 
 .outer {

@@ -59,16 +59,33 @@ class ResultContainer extends Component {
     return {
       daysAgo,
       mostRecent
-    }
+    };
   }
 
   getRepoWithLargestSize() {
+    const nextByteSize = 1024;
     const biggestSize = this.getHighestPropertyValue('size');
     const repoWithLargestSize = this.state.data.find((repo) => {
       return Number(repo.size) === biggestSize;
     });
+    const megaBytes = Number((biggestSize / nextByteSize).toFixed(0));
+    const gigaBytes = Number((megaBytes / nextByteSize).toFixed(0)); 
+    let type = 'KB';
+    let size = biggestSize;
 
-    return repoWithLargestSize;
+    if (gigaBytes > 1) {
+      type = 'GB';
+      size = gigaBytes;
+    } else if (megaBytes > 1) {
+      type = 'MB';
+      size = megaBytes;
+    }
+
+    return {
+      size,
+      type,
+      repoWithLargestSize
+    };
   }
 
   getHighestPropertyValue(property) {

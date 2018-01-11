@@ -7,6 +7,8 @@ class Result extends Component {
     const avatar = this.props.data.avatar;
     const mostStars = this.props.data.mostStars;
     const mostRecent = this.props.data.mostRecent;
+    const biggestSize = this.props.data.biggestSize;
+    const mostIssues = this.props.data.mostIssues;
 
     return (
       <div className="result">
@@ -70,10 +72,65 @@ class Result extends Component {
               Days Ago
             </p>
           </div>
-        </div>
-        <div className="row">
 
+          <div className="largest-size">
+            <p className="result-text">
+              Largest Size
+            </p>
+            <div className="wrap">
+              <figure className="chart" data-percent="100">
+                <svg width="120" height="120">
+                  <circle 
+                      className="outer"
+                      cx="130" 
+                      cy="60" 
+                      r="40" 
+                      transform="rotate(-90, 95, 95)"
+                  />
+                </svg>
+              </figure>
+              <p className="stat">
+                <CountUp
+                  start={0}
+                  end={Number(biggestSize.size)}
+                  duration={1.5}
+                />
+              </p>
+            </div>
+            <p className="result-footer-text">
+              {biggestSize.type}
+            </p>
+          </div>
+          <div className="most-issues">
+            <p className="result-text">
+              Most Issues
+            </p>
+            <div className="wrap">
+              <figure className="chart" data-percent="100">
+                <svg width="120" height="120">
+                <circle 
+                    className="outer"
+                    cx="130" 
+                    cy="60" 
+                    r="40" 
+                    transform="rotate(-90, 95, 95)"
+                />
+                </svg>
+              </figure>
+              <p className="stat">
+                <CountUp
+                    start={0}
+                    end={Number(mostIssues.open_issues)}
+                    duration={1.5}
+                />
+              </p>
+            </div>
+            <p className="result-footer-text">
+              Open Issues
+            </p>
+          </div>
         </div>
+
       </div>
     );
   }

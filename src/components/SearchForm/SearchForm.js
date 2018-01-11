@@ -15,6 +15,9 @@ class SearchForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+
+    if (this.state.value === '') return;
+
     if (this.props.onSubmit && typeof this.props.onSubmit === 'function') {
       this.props.onSubmit(this.state.value);
     }
