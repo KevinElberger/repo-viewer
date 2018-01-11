@@ -1,0 +1,171 @@
+.chart[data-percent='100'] .outer {
+    stroke-dashoffset: 0;
+    -webkit-animation: show100 2s;
+    animation: show100 2s;
+}
+  
+.chart[data-percent='75'] .outer {
+    stroke-dashoffset: 133;
+    -webkit-animation: show75 2s;
+    animation: show75 2s;
+}
+  
+.chart[data-percent='50'] .outer {
+    stroke-dashoffset: 267;
+    -webkit-animation: show50 2s;
+    animation: show50 2s;
+}
+  
+.chart[data-percent='25'] .outer {
+    stroke-dashoffset: 401;
+    -webkit-animation: show25 2s;
+    animation: show25 2s;
+}
+
+.most-recent, .most-starred, .most-issues, .largest-size {
+    width: 24%;
+    z-index: 0;
+    margin: 2px;
+    height: 100%;
+    flex-wrap: wrap;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: all .5s ease-in-out;
+}
+
+.most-starred-details {
+  top: 22%;
+  width: 100%;
+  height: 100%;
+  display: none;
+  color: #fff;
+  position: relative;
+  transition: all .5s ease-in-out;
+}
+
+.most-recent:hover, 
+.most-starred:hover, 
+.most-issues:hover, 
+.largest-size:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.most-recent .outer {
+    stroke: #b547ef;
+}
+
+.most-starred .outer {
+    stroke: #fc00ff;
+}
+
+.largest-size .outer {
+    stroke: #6f98e4;
+}
+
+.most-issues .outer {
+    stroke: #37d7da;
+}
+
+.outer {
+    stroke-width: 4;
+    fill: transparent;
+    stroke-dasharray: 534;
+    transition: stroke-dashoffset 1.5s;
+    -moz-transform: rotate(-89deg) translateX(-190px);
+}
+
+.result-footer-text {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  margin: -20px 0 0 0;
+}
+
+.result-text {
+    color: #fff;
+    font-size: 12px;
+    margin-top: 20px;
+    flex-direction: row;
+    text-transform: uppercase;
+}
+
+@-webkit-keyframes show100 {
+    from {
+      stroke-dashoffset: 537;
+    }
+    
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  @keyframes show100 {
+    from {
+      stroke-dashoffset: 537;
+    }
+    
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  @-webkit-keyframes show75 {
+    from {
+      stroke-dashoffset: 537;
+    }
+    
+    to {
+      stroke-dashoffset: 134;
+    }
+  }
+  
+  @keyframes show75 {
+    from {
+      stroke-dashoffset: 537;
+    }
+    
+    to {
+      stroke-dashoffset: 124;
+    }
+  }
+  
+  @-webkit-keyframes show50 {
+    from {
+      stroke-dashoffset: 537;
+    }
+    
+    to {
+      stroke-dashoffset: 267;
+    }
+  }
+  
+  @keyframes show50 {
+    from {
+      stroke-dashoffset: 537;
+    }
+    
+    to {
+      stroke-dashoffset: 267;
+    }
+  }
+  
+  @-webkit-keyframes show25 {
+    from {
+      stroke-dashoffset: 537;
+    }
+    
+    to {
+      stroke-dashoffset: 401;
+    }
+  }
+  
+  @keyframes show25 {
+    from {
+      stroke-dashoffset: 537;
+    }
+    
+    to {
+      stroke-dashoffset: 401;
+    }
+  }

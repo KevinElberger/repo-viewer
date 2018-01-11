@@ -4,6 +4,7 @@ button {
     height: 40px;
     padding: 4px;
     color: #fff;
+    cursor: pointer;
     font-size: 16px;
     background-color: #9a66ea;
     font-family: 'Ubuntu', sans-serif;
@@ -37,4 +38,29 @@ input[type="text"] {
     flex-direction: row;
     align-content: center;
     justify-content: center;
+}
+
+@media only screen and (min-width:320px)  { 
+    /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+    form {
+        width: 90%;
+    }
+  }
+@media only screen and (min-width:480px)  { 
+    /* smartphones, Android phones, landscape iPhone */ 
+    form {
+        width: 90%;
+    }
+}
+@media only screen and (min-width:600px)  { 
+    /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+    form {
+        width: 90%;
+    }
+}
+@media (min-width:801px)  { 
+    /* tablet, landscape iPad, lo-res laptops ands desktops */ 
+    form {
+        width: 60%;
+    }
 }

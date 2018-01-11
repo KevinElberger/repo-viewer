@@ -1,134 +1,64 @@
 import React, { Component } from 'react';
+import StatPanel from '../StatPanel/StatPanel';
 import CountUp from 'react-countup';
 import './result.css';
 
 class Result extends Component {
-  render() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: null
+    };
+  }
+  componentWillMount() {
     const avatar = this.props.data.avatar;
-    const mostStars = this.props.data.mostStars;
-    const mostRecent = this.props.data.mostRecent;
-    const biggestSize = this.props.data.biggestSize;
-    const mostIssues = this.props.data.mostIssues;
+    const mostStars = {
+      panelName: 'most-starred',
+      resultText: 'Most Starred',
+      footerText: 'Stars',
+      panelNumber: this.props.data.mostStars.stargazers_count
+    };
+    const mostRecent = {
+      panelName: 'most-recent',
+      resultText: 'Most Recent',
+      footerText: 'Days Ago',
+      panelNumber: this.props.data.mostRecent.daysAgo
+    };
+    const biggestSize = {
+      panelName: 'largest-size',
+      resultText: 'Largest Size',
+      footerText: this.props.data.biggestSize.type,
+      panelNumber: this.props.data.biggestSize.size
+    };
+    const mostIssues = {
+      panelName: 'most-issues',
+      resultText: 'Most Issues',
+      footerText: 'Open Issues',
+      panelNumber: this.props.data.mostIssues.open_issues
+    };
 
+    this.setState({
+      data: {
+        avatar,
+        mostStars,
+        mostRecent,
+        biggestSize,
+        mostIssues
+      }
+    });    
+  }
+
+  render() {
     return (
       <div className="result">
         <div className="avatar">
-          <img src={avatar} alt="avatar" />
+          <img src={this.state.data.avatar} alt="avatar" />
         </div>
         <div className="row">
-          <div className="most-starred">
-            <p className="result-text">
-              Most Starred
-            </p>
-            <div className="wrap">
-              <figure className="chart" data-percent="100">
-                <svg width="120" height="120">
-                  <circle 
-                      className="outer"
-                      cx="130" 
-                      cy="60" 
-                      r="40" 
-                      transform="rotate(-90, 95, 95)"
-                  />
-                </svg>
-              </figure>
-              <p className="stat">
-                <CountUp
-                  start={0}
-                  end={Number(mostStars.stargazers_count)}
-                  duration={1.5}
-                />
-              </p>
-            </div>
-            <p className="result-footer-text">
-              Stars
-            </p>
-          </div>
-          <div className="most-recent">
-            <p className="result-text">
-              Most Recently Active
-            </p>
-            <div className="wrap">
-              <figure className="chart" data-percent="100">
-                <svg width="120" height="120">
-                <circle 
-                    className="outer"
-                    cx="130" 
-                    cy="60" 
-                    r="40" 
-                    transform="rotate(-90, 95, 95)"
-                />
-                </svg>
-              </figure>
-              <p className="stat">
-                <CountUp
-                    start={0}
-                    end={Number(mostRecent.daysAgo)}
-                    duration={1.5}
-                />
-              </p>
-            </div>
-            <p className="result-footer-text">
-              Days Ago
-            </p>
-          </div>
-
-          <div className="largest-size">
-            <p className="result-text">
-              Largest Size
-            </p>
-            <div className="wrap">
-              <figure className="chart" data-percent="100">
-                <svg width="120" height="120">
-                  <circle 
-                      className="outer"
-                      cx="130" 
-                      cy="60" 
-                      r="40" 
-                      transform="rotate(-90, 95, 95)"
-                  />
-                </svg>
-              </figure>
-              <p className="stat">
-                <CountUp
-                  start={0}
-                  end={Number(biggestSize.size)}
-                  duration={1.5}
-                />
-              </p>
-            </div>
-            <p className="result-footer-text">
-              {biggestSize.type}
-            </p>
-          </div>
-          <div className="most-issues">
-            <p className="result-text">
-              Most Issues
-            </p>
-            <div className="wrap">
-              <figure className="chart" data-percent="100">
-                <svg width="120" height="120">
-                <circle 
-                    className="outer"
-                    cx="130" 
-                    cy="60" 
-                    r="40" 
-                    transform="rotate(-90, 95, 95)"
-                />
-                </svg>
-              </figure>
-              <p className="stat">
-                <CountUp
-                    start={0}
-                    end={Number(mostIssues.open_issues)}
-                    duration={1.5}
-                />
-              </p>
-            </div>
-            <p className="result-footer-text">
-              Open Issues
-            </p>
-          </div>
+          <StatPanel data={this.state.data.mostStars} />
+          <StatPanel data={this.state.data.mostRecent} />
+          <StatPanel data={this.state.data.biggestSize} />
+          <StatPanel data={this.state.data.mostIssues} />
         </div>
 
         <div className="row">
