@@ -50,6 +50,7 @@
   color: #fff;
   display: block;
   position: relative;
+  transition: all .5s ease-in-out;
 }
 
 .detail.active {

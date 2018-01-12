@@ -27,10 +27,8 @@ class Home extends Component {
       .then((response) => response.json())
       .then((data) => {
         if (data.length > 0) {
-          console.log(data);
-          //this.calculateRepoStatistics(user, data);
-          this.setState({ loading: false, repos: data });
-          this.props.resize();
+          console.log('repos: \n' + data);
+          this.calculateRepoStatistics(user, data);
         } else {
           this.setState({ loading: false });
         }
@@ -45,15 +43,22 @@ class Home extends Component {
     let preferredCommitDay = null;
     const apiRootUrl = `https://api.github.com/users/${user}/events`;
 
-    // TODO: Get semi-accurate count of total commits
-    /*
+    // TODO: Get semi-accurate count of total commits from past 90 days
+
     fetch(apiRootUrl)
       .then((response) => response.json())
       .then((events) => {
-        // Filter event.type set to PushEvent
         // Filter commits that match username
+        const pushEvents = events.filter((event) => {
+          return event.type === 'PushEvent';
+        });
       })
-    */
+      .catch((error) => console.log(error));
+
+      /*
+        this.setState({ loading: false, repos: data });
+        this.props.resize();
+      */
   }
 
   render() {
