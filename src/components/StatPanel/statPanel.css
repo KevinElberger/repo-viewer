@@ -46,7 +46,6 @@
 .detail {
   top: 10%;
   width: 100%;
-  margin: 2px;
   height: 100%;
   color: #fff;
   display: block;
@@ -54,7 +53,7 @@
 }
 
 .detail.active {
-    top: -94%;
+    top: -100%;
     transition: all .5s ease-in-out;
 }
 
@@ -110,11 +109,22 @@
     -moz-transform: rotate(-89deg) translateX(-190px);
 }
 
+.panel-wrap {
+    top: 0;
+    height: 100%;
+    position: relative;
+}
+
+.result-text,
+.detail-title {
+    margin: 0;
+    padding-top: 16px;
+}
+
 .result-footer-text {
   color: #fff;
   font-size: 24px;
   font-weight: bold;
-  margin: -20px 0 0 0;
 }
 
 .result-text {
