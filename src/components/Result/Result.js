@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import StatPanel from '../StatPanel/StatPanel';
-import CountUp from 'react-countup';
 import './result.css';
 
 class Result extends Component {
@@ -16,17 +15,23 @@ class Result extends Component {
       panelName: 'most-starred',
       resultText: 'Most Starred',
       footerText: 'Stars',
+      detailName: 'most-starred-detail',
+      detailTitle: this.props.data.mostStars.name,
       panelNumber: this.props.data.mostStars.stargazers_count
     };
     const mostRecent = {
       panelName: 'most-recent',
       resultText: 'Most Recent',
       footerText: 'Days Ago',
+      detailName: 'most-recent-detail',
+      detailTitle: this.props.data.mostRecent.repo.name,
       panelNumber: this.props.data.mostRecent.daysAgo
     };
     const biggestSize = {
       panelName: 'largest-size',
       resultText: 'Largest Size',
+      detailName: 'largest-size-detail',
+      detailTitle: this.props.data.biggestSize.repoWithLargestSize.name,
       footerText: this.props.data.biggestSize.type,
       panelNumber: this.props.data.biggestSize.size
     };
@@ -34,6 +39,8 @@ class Result extends Component {
       panelName: 'most-issues',
       resultText: 'Most Issues',
       footerText: 'Open Issues',
+      detailName: 'most-issues-detail',
+      detailTitle: this.props.data.mostIssues.name,
       panelNumber: this.props.data.mostIssues.open_issues
     };
 

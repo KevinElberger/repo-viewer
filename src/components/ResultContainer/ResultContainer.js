@@ -54,9 +54,13 @@ class ResultContainer extends Component {
     const mostRecent = new Date(Math.max.apply(null, this.state.data.map((repo) => {
       return new Date(repo.updated_at);
     })));
+    const repo = this.state.data.find((repo) => {
+      return new Date(repo.updated_at).getTime() === mostRecent.getTime();
+    });
     const daysAgo = Math.floor((today - mostRecent) / oneDay);
 
     return {
+      repo,
       daysAgo,
       mostRecent
     };

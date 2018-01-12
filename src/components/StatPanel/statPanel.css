@@ -22,6 +22,13 @@
     animation: show25 2s;
 }
 
+.close {
+    top: 0;
+    right: 0;
+    margin: 4px;
+    position: relative;
+}
+
 .most-recent, .most-starred, .most-issues, .largest-size {
     width: 24%;
     z-index: 0;
@@ -29,19 +36,30 @@
     height: 100%;
     flex-wrap: wrap;
     cursor: pointer;
+    overflow: hidden;
     align-items: center;
     justify-content: center;
     transition: all .5s ease-in-out;
 }
 
-.most-starred-details {
+.detail {
   top: 22%;
   width: 100%;
+  margin: 2px;
   height: 100%;
-  display: none;
   color: #fff;
+  display: block;
   position: relative;
-  transition: all .5s ease-in-out;
+}
+
+.detail.active {
+    top: -88%;
+    transition: all .5s ease-in-out;
+}
+
+.detail-title {
+    padding-top: 20px;
+    text-transform: uppercase;
 }
 
 .most-recent:hover, 
@@ -55,16 +73,32 @@
     stroke: #b547ef;
 }
 
+.most-recent-detail {
+    background: #b547ef;
+}
+
 .most-starred .outer {
     stroke: #fc00ff;
+}
+
+.most-starred-detail {
+    background: #fc00ff;
 }
 
 .largest-size .outer {
     stroke: #6f98e4;
 }
 
+.largest-size-detail {
+    background: #6f98e4;
+}
+
 .most-issues .outer {
     stroke: #37d7da;
+}
+
+.most-issues-detail {
+    background: #37d7da;
 }
 
 .outer {
