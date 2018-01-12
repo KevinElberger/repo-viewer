@@ -37,13 +37,14 @@
     flex-wrap: wrap;
     cursor: pointer;
     overflow: hidden;
+    user-select: none;
     align-items: center;
     justify-content: center;
     transition: all .5s ease-in-out;
 }
 
 .detail {
-  top: 22%;
+  top: 10%;
   width: 100%;
   margin: 2px;
   height: 100%;
@@ -53,7 +54,7 @@
 }
 
 .detail.active {
-    top: -88%;
+    top: -94%;
     transition: all .5s ease-in-out;
 }
 
@@ -94,11 +95,11 @@
 }
 
 .most-issues .outer {
-    stroke: #37d7da;
+    stroke: #21bfe3;
 }
 
 .most-issues-detail {
-    background: #37d7da;
+    background: #21bfe3;
 }
 
 .outer {
@@ -119,7 +120,6 @@
 .result-text {
     color: #fff;
     font-size: 12px;
-    margin-top: 20px;
     flex-direction: row;
     text-transform: uppercase;
 }

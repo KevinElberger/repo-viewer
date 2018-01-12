@@ -15,14 +15,20 @@ class Home extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(name) {
+  handleSubmit(user) {
     this.setState({ loading: true });
+    this.getRepoList(user);
+  }
+
+  getRepoList(user) {
     const apiRootUrl = 'https://api.github.com/users/';
-    fetch(`${apiRootUrl}${name}/repos`)
+
+    fetch(`${apiRootUrl}${user}/repos`)
       .then((response) => response.json())
       .then((data) => {
         if (data.length > 0) {
           console.log(data);
+          //this.calculateRepoStatistics(user, data);
           this.setState({ loading: false, repos: data });
           this.props.resize();
         } else {
@@ -32,6 +38,22 @@ class Home extends Component {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  calculateRepoStatistics(user, repoList) {
+    let totalCommits = 0;
+    let preferredCommitDay = null;
+    const apiRootUrl = `https://api.github.com/users/${user}/events`;
+
+    // TODO: Get semi-accurate count of total commits
+    /*
+    fetch(apiRootUrl)
+      .then((response) => response.json())
+      .then((events) => {
+        // Filter event.type set to PushEvent
+        // Filter commits that match username
+      })
+    */
   }
 
   render() {
