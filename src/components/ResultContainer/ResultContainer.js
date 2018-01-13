@@ -49,15 +49,14 @@ class ResultContainer extends Component {
     return repoWithMostStars;
   }
 
-  // TODO: Fix date bug
   getRepoWithMostRecentDate() {
     const oneDay = 86400000;
     const today = new Date();
     const mostRecent = new Date(Math.max.apply(null, this.state.data.repos.map((repo) => {
-      return new Date(repo.updated_at);
+      return new Date(repo.pushed_at);
     })));
     const repo = this.state.data.repos.find((repo) => {
-      return new Date(repo.updated_at).getTime() === mostRecent.getTime();
+      return new Date(repo.pushed_at).getTime() === mostRecent.getTime();
     });
     const daysAgo = Math.floor((today - mostRecent) / oneDay);
 
