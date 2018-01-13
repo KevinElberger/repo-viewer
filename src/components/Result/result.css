@@ -12,6 +12,13 @@
     height: 100px;
 }
 
+.commit-msg-header,
+.commit-msg-footer {
+  text-align: center;
+  align-self: center;
+  justify-content: center;
+}
+
 .result-footer-text {
   color: #fff;
   font-size: 24px;
@@ -36,11 +43,22 @@
     justify-content: center;
 }
 
+.row-wrap {
+  width: 50%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .stat {
   font-size: 32px;
   margin-top: 56px;
   font-weight: bold;
   position: absolute;
+}
+
+.total-commits {
+  text-align: center;
+  justify-content: center;
 }
 
 .wrap {

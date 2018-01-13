@@ -69,7 +69,18 @@ class Result extends Component {
         </div>
 
         <div className="row">
-
+          <div className="row-wrap">
+            <p className="commit-msg-header">
+              You've made
+            </p>
+            <h1 className="total-commits">
+              {this.props.data.totalCommits}
+            </h1>
+            <p className="commit-msg-footer">
+              Commits in the past 90 days!
+            </p>
+          </div>
+          <div className="row-wrap"></div>
         </div>
       </div>
     );

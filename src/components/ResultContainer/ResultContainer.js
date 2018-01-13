@@ -7,12 +7,12 @@ class ResultContainer extends Component {
     super(props);
     this.state = {
       result: null,
-      data: this.props.repos
+      data: this.props.data
     };
   }
 
   componentWillMount() {
-    const avatar = this.state.data[0].owner.avatar_url;
+    const avatar = this.state.data.repos[0].owner.avatar_url;
     const mostIssues = this.getRepoWithMostIssues();
     const mostStars = this.getRepoWithMostStars();
     const mostRecent = this.getRepoWithMostRecentDate();
@@ -25,14 +25,15 @@ class ResultContainer extends Component {
         mostIssues,
         mostStars,
         mostRecent,
-        biggestSize
+        biggestSize,
+        totalCommits: this.state.data.totalCommits
       }
     });
   }
 
   getRepoWithMostIssues() {
     const maxIssueCount = this.getHighestPropertyValue('open_issues');
-    const repoWithMostIssues = this.state.data.find((repo) => {
+    const repoWithMostIssues = this.state.data.repos.find((repo) => {
       return Number(repo.open_issues) === maxIssueCount;
     });
 
@@ -41,20 +42,21 @@ class ResultContainer extends Component {
 
   getRepoWithMostStars() {
     const highestStarCount = this.getHighestPropertyValue('stargazers_count');
-    const repoWithMostStars = this.state.data.find((repo) => {
+    const repoWithMostStars = this.state.data.repos.find((repo) => {
       return Number(repo.stargazers_count) === highestStarCount;
     });
 
     return repoWithMostStars;
   }
 
+  // TODO: Fix date bug
   getRepoWithMostRecentDate() {
     const oneDay = 86400000;
     const today = new Date();
-    const mostRecent = new Date(Math.max.apply(null, this.state.data.map((repo) => {
+    const mostRecent = new Date(Math.max.apply(null, this.state.data.repos.map((repo) => {
       return new Date(repo.updated_at);
     })));
-    const repo = this.state.data.find((repo) => {
+    const repo = this.state.data.repos.find((repo) => {
       return new Date(repo.updated_at).getTime() === mostRecent.getTime();
     });
     const daysAgo = Math.floor((today - mostRecent) / oneDay);
@@ -69,7 +71,7 @@ class ResultContainer extends Component {
   getRepoWithLargestSize() {
     const nextByteSize = 1024;
     const biggestSize = this.getHighestPropertyValue('size');
-    const repoWithLargestSize = this.state.data.find((repo) => {
+    const repoWithLargestSize = this.state.data.repos.find((repo) => {
       return Number(repo.size) === biggestSize;
     });
     const megaBytes = Number((biggestSize / nextByteSize).toFixed(0));
@@ -93,7 +95,7 @@ class ResultContainer extends Component {
   }
 
   getHighestPropertyValue(property) {
-    return Math.max.apply(Math, this.state.data.map((repo) => {
+    return Math.max.apply(Math, this.state.data.repos.map((repo) => {
       return repo[property];
     }));
   }
