@@ -17,32 +17,49 @@ class Result extends Component {
       resultText: 'Most Starred',
       footerText: 'Stars',
       detailName: 'most-starred-detail',
+      link: this.props.data.mostStars.svn_url,
       detailTitle: this.props.data.mostStars.name,
-      panelNumber: this.props.data.mostStars.stargazers_count
+      panelNumber: this.props.data.mostStars.stargazers_count,
+      description: 
+        `This is your most starred repository! 
+        Stars show appreciation to the repository maintainer for their work.
+        You should be proud.`
     };
     const mostRecent = {
       panelName: 'most-recent',
       resultText: 'Most Recent',
       footerText: 'Days Ago',
       detailName: 'most-recent-detail',
+      link: this.props.data.mostRecent.repo.svn_url,
       detailTitle: this.props.data.mostRecent.repo.name,
-      panelNumber: this.props.data.mostRecent.daysAgo
+      panelNumber: this.props.data.mostRecent.daysAgo,
+      description:
+        `This is your repository you most recently made a commit to!
+        Try to keep this number low and keep working on cool stuff.`
     };
     const biggestSize = {
       panelName: 'largest-size',
       resultText: 'Largest Size',
       detailName: 'largest-size-detail',
+      link: this.props.data.biggestSize.repoWithLargestSize.svn_url,
       detailTitle: this.props.data.biggestSize.repoWithLargestSize.name,
       footerText: this.props.data.biggestSize.type,
-      panelNumber: this.props.data.biggestSize.size
+      panelNumber: this.props.data.biggestSize.size,
+      description: 
+        `This is your largest repository (in terms of file size).
+        Bigger doesn't always mean better!`
     };
     const mostIssues = {
       panelName: 'most-issues',
       resultText: 'Most Issues',
       footerText: 'Open Issues',
       detailName: 'most-issues-detail',
+      link: this.props.data.mostIssues.svn_url,
       detailTitle: this.props.data.mostIssues.name,
-      panelNumber: this.props.data.mostIssues.open_issues
+      panelNumber: this.props.data.mostIssues.open_issues,
+      description:
+        `This is your repository with the most open issues!
+        Hopefully this number is at zero!`
     };
 
     this.setState({

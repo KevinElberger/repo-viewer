@@ -18,7 +18,6 @@ class ResultContainer extends Component {
     const mostRecent = this.getRepoWithMostRecentDate();
     const biggestSize = this.getRepoWithLargestSize();
 
-
     this.setState({
       result: {
         avatar,

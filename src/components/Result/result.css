@@ -19,6 +19,17 @@
   justify-content: center;
 }
 
+.detail-description {
+  padding: 0 6px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.repo-github {
+  color: #fff;
+  padding: 10% 0;
+}
+
 .result-footer-text {
   color: #fff;
   font-size: 24px;
