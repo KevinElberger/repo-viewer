@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import StatPanel from '../StatPanel/StatPanel';
+import CountUp from 'react-countup';
 import './result.css';
 
 class Result extends Component {
@@ -74,7 +75,11 @@ class Result extends Component {
               You've made
             </p>
             <h1 className="total-commits">
-              {this.props.data.totalCommits}
+              <CountUp
+                start={0}
+                end={Number(this.props.data.totalCommits)}
+                duration={1.5}
+              />
             </h1>
             <p className="commit-msg-footer">
               Commits in the past 90 days!
