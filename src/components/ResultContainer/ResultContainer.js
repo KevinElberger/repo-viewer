@@ -13,6 +13,7 @@ class ResultContainer extends Component {
 
   componentWillMount() {
     const avatar = this.state.data.repos[0].owner.avatar_url;
+    const profileUrl = this.state.data.repos[0].owner.html_url;
     const mostIssues = this.getRepoWithMostIssues();
     const mostStars = this.getRepoWithMostStars();
     const mostRecent = this.getRepoWithMostRecentDate();
@@ -21,6 +22,7 @@ class ResultContainer extends Component {
     this.setState({
       result: {
         avatar,
+        profileUrl,
         mostIssues,
         mostStars,
         mostRecent,

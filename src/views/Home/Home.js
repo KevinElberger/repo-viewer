@@ -21,9 +21,9 @@ class Home extends Component {
   }
 
   getApiData(user) {
-    const apiUserUrl = 'https://api.github.com/users/';
+    const apiUserReposUrl = `https://api.github.com/users/${user}/repos`;
 
-    fetch(`${apiUserUrl}${user}/repos`)
+    fetch(apiUserReposUrl)
       .then((response) => response.json())
       .then((data) => {
         if (data.length > 0) {
@@ -38,7 +38,6 @@ class Home extends Component {
   }
 
   calculateRepoStatistics(user, repoList) {
-    let preferredCommitDay = null;
     const apiEventsUrl = `https://api.github.com/users/${user}/events`;
 
     fetch(apiEventsUrl)

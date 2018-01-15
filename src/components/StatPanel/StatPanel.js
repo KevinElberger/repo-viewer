@@ -57,7 +57,7 @@ class StatPanel extends Component {
             {this.props.data.detailTitle}
           </p>
           <div className="detail-stats">
-            <a href={this.props.data.link}>
+            <a href={this.props.data.link} target="_blank">
               <i className="fa fa-github-alt repo-github" aria-hidden="true"></i>
             </a>
           </div>

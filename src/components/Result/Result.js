@@ -12,6 +12,7 @@ class Result extends Component {
   }
   componentWillMount() {
     const avatar = this.props.data.avatar;
+    const profileUrl = this.props.data.profileUrl;
     const mostStars = {
       panelName: 'most-starred',
       resultText: 'Most Starred',
@@ -65,6 +66,7 @@ class Result extends Component {
     this.setState({
       data: {
         avatar,
+        profileUrl,
         mostStars,
         mostRecent,
         biggestSize,
@@ -74,10 +76,13 @@ class Result extends Component {
   }
 
   render() {
+    console.log(this.state.data);
     return (
       <div className="result">
         <div className="avatar">
-          <img src={this.state.data.avatar} alt="avatar" />
+          <a href={this.state.data.profileUrl} target="_blank">
+            <img src={this.state.data.avatar} alt="avatar" />
+          </a>
         </div>
         <div className="row">
           <StatPanel data={this.state.data.mostStars} />
