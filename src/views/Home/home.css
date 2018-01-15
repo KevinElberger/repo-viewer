@@ -3,6 +3,7 @@
     height: 100%;
     display: flex;
     flex-wrap: wrap;
+    min-width: 220px;
     align-items: center;
     align-content: center;
     justify-content: center;

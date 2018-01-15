@@ -14,6 +14,7 @@
   height: 50%;
   display: flex;
   flex-wrap: wrap;
+  min-width: 220px;
   text-align: center;
   border-radius: 8px;
   align-content: center;
@@ -25,6 +26,7 @@
 
 .container.expand {
   height: 90%;
+  min-width: 220px;
 }
 
 @media only screen and (min-width:320px)  { 
