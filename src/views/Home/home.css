@@ -4,6 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     min-width: 220px;
+    overflow: hidden;
     align-items: center;
     align-content: center;
     justify-content: center;
@@ -16,7 +17,7 @@
 
 .title {
     margin: 0;
-    height: 25%;
+    height: 15%;
     width: 100%;
     display: flex;
     color: #fff;

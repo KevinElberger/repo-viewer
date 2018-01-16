@@ -19,23 +19,9 @@
   justify-content: center;
 }
 
-.detail-description {
-  margin: 0;
-  padding: 0 6px;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
 .repo-github {
   color: #fff;
   padding: 10% 0;
-}
-
-.result-footer-text {
-  color: #fff;
-  font-size: 24px;
-  font-weight: bold;
-  margin: -20px 0 0 0;
 }
 
 .result-text {
@@ -61,13 +47,6 @@
   justify-content: center;
 }
 
-.stat {
-  font-size: 32px;
-  margin-top: 56px;
-  font-weight: bold;
-  position: absolute;
-}
-
 .total-commits {
   text-align: center;
   justify-content: center;
@@ -77,4 +56,10 @@
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+@media only screen and (max-width: 320px) and (orientation:landscape) {
+  .avatar {
+    display: none;
+  }
 }

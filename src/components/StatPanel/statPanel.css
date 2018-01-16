@@ -31,9 +31,9 @@
 
 .most-recent, .most-starred, .most-issues, .largest-size {
     z-index: 0;
+    width: 22%;
     margin: 2px;
-    width: 220px;
-    height: 100%;
+    height: 80%;
     flex-wrap: wrap;
     cursor: pointer;
     overflow: hidden;
@@ -56,6 +56,13 @@
 .detail.active {
     top: -100%;
     transition: all .5s ease-in-out;
+}
+
+.detail-description {
+  margin: 0;
+  padding: 0 6px;
+  font-size: .8em;
+  line-height: 1.5;
 }
 
 .detail-title {
@@ -126,6 +133,7 @@
   color: #fff;
   font-size: 24px;
   font-weight: bold;
+  margin: -20px 0 0 0;
 }
 
 .result-text {
@@ -133,6 +141,13 @@
     font-size: 12px;
     flex-direction: row;
     text-transform: uppercase;
+}
+
+.stat {
+  font-size: 32px;
+  margin-top: 56px;
+  font-weight: bold;
+  position: absolute;
 }
 
 @-webkit-keyframes show100 {
@@ -143,9 +158,9 @@
     to {
       stroke-dashoffset: 0;
     }
-  }
+}
   
-  @keyframes show100 {
+@keyframes show100 {
     from {
       stroke-dashoffset: 537;
     }
@@ -153,9 +168,9 @@
     to {
       stroke-dashoffset: 0;
     }
-  }
+}
   
-  @-webkit-keyframes show75 {
+@-webkit-keyframes show75 {
     from {
       stroke-dashoffset: 537;
     }
@@ -163,9 +178,9 @@
     to {
       stroke-dashoffset: 134;
     }
-  }
+}
   
-  @keyframes show75 {
+@keyframes show75 {
     from {
       stroke-dashoffset: 537;
     }
@@ -173,9 +188,9 @@
     to {
       stroke-dashoffset: 124;
     }
-  }
+}
   
-  @-webkit-keyframes show50 {
+@-webkit-keyframes show50 {
     from {
       stroke-dashoffset: 537;
     }
@@ -183,9 +198,9 @@
     to {
       stroke-dashoffset: 267;
     }
-  }
+}
   
-  @keyframes show50 {
+@keyframes show50 {
     from {
       stroke-dashoffset: 537;
     }
@@ -193,9 +208,9 @@
     to {
       stroke-dashoffset: 267;
     }
-  }
+}
   
-  @-webkit-keyframes show25 {
+@-webkit-keyframes show25 {
     from {
       stroke-dashoffset: 537;
     }
@@ -203,9 +218,9 @@
     to {
       stroke-dashoffset: 401;
     }
-  }
+}
   
-  @keyframes show25 {
+@keyframes show25 {
     from {
       stroke-dashoffset: 537;
     }
@@ -213,4 +228,129 @@
     to {
       stroke-dashoffset: 401;
     }
+}
+
+@media only screen and (max-width:319px)  { 
+  .detail-title {
+    padding-top: 0;
+    font-size: .7em;
   }
+  .detail-description {
+    font-size: .6em;
+    line-height: 1.1;
+  }
+  .result-text {
+    padding-top: 0;
+  }
+}
+@media only screen and (max-width:320px)  { 
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+  circle {
+    cx: 150;
+    cy: 50;
+    r: 35;
+    transform: rotate(-90deg, 95, 95);
+  }
+  .detail-title {
+    padding-top: 0;
+    font-size: .7em;
+  }
+  .detail-description {
+    font-size: .6em;
+    line-height: 1.1;
+  }
+  .footer {
+    display: none;
+  }
+  .result-text {
+    padding-top: 0;
+  }
+  .result-footer-text {
+    font-size: .7em;
+  }
+  .stat {
+    margin-top: 35px;
+  }
+  svg {
+    width: 100px;
+    height: 100px;
+  }
+  .title {
+    height: 20%;
+  }
+}
+@media only screen and (max-width: 320px) and (orientation:landscape) {
+  .footer, .title, .avatar {
+    display: none;
+  }
+  .result {
+    height: 100%;
+  }
+}
+@media only screen and (max-width:480px)  { 
+  /* smartphones, Android phones, landscape iPhone */ 
+  .detail-title {
+    padding-top: 0;
+    font-size: .7em;
+  }
+  .detail-description {
+    font-size: .6em;
+    line-height: 1.1;
+  }
+  .result-text {
+    padding-top: 0;
+  }
+  .result-footer-text {
+    font-size: .8em;
+  }
+}
+
+@media only screen and (max-width:600px)  { 
+  /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+  .detail-title {
+    padding-top: 0;
+    font-size: 1em;
+  }
+  .detail-description {
+    font-size: .8em;
+    line-height: 1.1;
+  }
+  .result-text {
+    padding-top: 0;
+  }
+  .result-footer-text {
+    font-size: .8em;
+  }
+}
+@media (max-width:600px) and (orientation:landscape)  { 
+  .result-footer-text {
+    font-size: .8em;
+  }
+}
+@media (max-width:801px)  { 
+  /* tablet, landscape iPad, lo-res laptops ands desktops */ 
+  .detail-title {
+    padding-top: 0;
+    font-size: 1em;
+  }
+  .detail-description {
+    font-size: .7em;
+    line-height: 1.1;
+  }
+  .result-text {
+    padding-top: 0;
+  }
+}
+@media (max-width:801px) and (orientation:landscape)  {
+  .detail.active {
+    overflow: auto;
+  }
+  .detail-description {
+    font-size: .6em;
+    line-height: 1.2;
+  }
+  .result-footer-text {
+    font-size: .8em;
+    margin: -35px 0 0 0;
+  }
+}

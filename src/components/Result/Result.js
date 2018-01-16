@@ -76,7 +76,6 @@ class Result extends Component {
   }
 
   render() {
-    console.log(this.state.data);
     return (
       <div className="result">
         <div className="avatar">
@@ -107,7 +106,6 @@ class Result extends Component {
               Commits in the past 90 days!
             </p>
           </div>
-          <div className="row-wrap"></div>
         </div>
       </div>
     );
