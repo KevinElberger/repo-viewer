@@ -1,6 +1,8 @@
 # repo-viewer
 
-> A web application that generates statistics for Github profiles
+>A web application that generates statistics for Github profiles
+
+![Results Page](./public/images/repo-viewer-results.png);
 
 ## Build Setup
 
