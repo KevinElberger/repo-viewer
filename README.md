@@ -2,7 +2,9 @@
 
 >A web application that generates statistics for Github profiles
 
-![Results Page](./public/images/repo-viewer-results.png);
+<p align="center">
+    <img src="./public/images/repo-viewer-results.png" alt="Result Page"/>
+</p>
 
 ## Build Setup
 
