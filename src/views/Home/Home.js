@@ -32,9 +32,7 @@ class Home extends Component {
           this.setState({ loading: false });
         }
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => console.log(error));
   }
 
   calculateRepoStatistics(user, repoList) {
@@ -78,7 +76,11 @@ class Home extends Component {
 
     return (
       <div className="home">
-        <h1 className="title">Repo Viewer</h1>
+        <div className="title-wrapper">
+          <a href="/" className="title-link">
+            <h1 className="title">Repo Viewer</h1>
+          </a>
+        </div>
         {
           loading ? <Loader /> : 
           hasData ? <ResultContainer data={this.state.data} /> : 

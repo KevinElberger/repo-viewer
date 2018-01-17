@@ -16,9 +16,6 @@
 }
 
 .title {
-    margin: 0;
-    height: 15%;
-    width: 100%;
     display: flex;
     color: #fff;
     font-size: 40px;
@@ -27,5 +24,18 @@
     align-items: center;
     align-content: center;
     align-self: flex-start;
+    justify-content: center;
+}
+
+.title-link {
+    text-decoration: none;
+}
+
+.title-wrapper {
+    margin: 0;
+    height: 15%;
+    width: 100%;
+    align-items: center;
+    align-content: center;
     justify-content: center;
 }

@@ -6,78 +6,50 @@ class ResultContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      result: null,
-      data: this.props.data
+      data: null
     };
   }
 
   componentWillMount() {
-    const avatar = this.state.data.repos[0].owner.avatar_url;
-    const profileUrl = this.state.data.repos[0].owner.html_url;
-    const mostIssues = this.getRepoWithMostIssues();
-    const mostStars = this.getRepoWithMostStars();
-    const mostRecent = this.getRepoWithMostRecentDate();
-    const biggestSize = this.getRepoWithLargestSize();
-
     this.setState({
-      result: {
-        avatar,
-        profileUrl,
-        mostIssues,
-        mostStars,
-        mostRecent,
-        biggestSize,
-        totalCommits: this.state.data.totalCommits
+      data: {
+        avatar: this.props.data.repos[0].owner.avatar_url,
+        profileUrl: this.props.data.repos[0].owner.html_url,
+        mostIssues: this.getRepoWithHighestValue('open_issues'),
+        mostStars: this.getRepoWithHighestValue('stargazers_count'),
+        mostRecent: this.getRepoWithMostRecentCommit(),
+        biggestSize: this.getRepoWithLargestSize(),
+        totalCommits: this.props.data.totalCommits
       }
     });
   }
 
-  getRepoWithMostIssues() {
-    const maxIssueCount = this.getHighestPropertyValue('open_issues');
-    const repoWithMostIssues = this.state.data.repos.find((repo) => {
-      return Number(repo.open_issues) === maxIssueCount;
-    });
-
-    return repoWithMostIssues;
-  }
-
-  getRepoWithMostStars() {
-    const highestStarCount = this.getHighestPropertyValue('stargazers_count');
-    const repoWithMostStars = this.state.data.repos.find((repo) => {
-      return Number(repo.stargazers_count) === highestStarCount;
-    });
-
-    return repoWithMostStars;
-  }
-
-  getRepoWithMostRecentDate() {
+  getRepoWithMostRecentCommit() {
     const oneDay = 86400000;
     const today = new Date();
-    const mostRecent = new Date(Math.max.apply(null, this.state.data.repos.map((repo) => {
+    const mostRecentPush = new Date(Math.max.apply(null, this.props.data.repos.map((repo) => {
       return new Date(repo.pushed_at);
     })));
-    const repo = this.state.data.repos.find((repo) => {
-      return new Date(repo.pushed_at).getTime() === mostRecent.getTime();
+    const repo = this.props.data.repos.find((repo) => {
+      return new Date(repo.pushed_at).getTime() === mostRecentPush.getTime();
     });
-    const daysAgo = Math.floor((today - mostRecent) / oneDay);
+    const daysAgo = Math.floor((today - mostRecentPush) / oneDay);
 
     return {
       repo,
       daysAgo,
-      mostRecent
+      mostRecentPush
     };
   }
 
   getRepoWithLargestSize() {
     const nextByteSize = 1024;
-    const biggestSize = this.getHighestPropertyValue('size');
-    const repoWithLargestSize = this.state.data.repos.find((repo) => {
-      return Number(repo.size) === biggestSize;
-    });
-    const megaBytes = Number((biggestSize / nextByteSize).toFixed(0));
+    const repoWithLargestSize = this.getRepoWithHighestValue('size');
+    console.log(repoWithLargestSize);
+    const megaBytes = Number((repoWithLargestSize.size / nextByteSize).toFixed(0));
     const gigaBytes = Number((megaBytes / nextByteSize).toFixed(0)); 
     let type = 'KB';
-    let size = biggestSize;
+    let size = repoWithLargestSize.size;
 
     if (gigaBytes > 1) {
       type = 'GB';
@@ -94,14 +66,17 @@ class ResultContainer extends Component {
     };
   }
 
-  getHighestPropertyValue(property) {
-    return Math.max.apply(Math, this.state.data.repos.map((repo) => {
+  getRepoWithHighestValue(property) {
+    const highestValue = Math.max.apply(Math, this.props.data.repos.map((repo) => {
       return repo[property];
     }));
+    return this.props.data.repos.find((repo) => {
+      return Number(repo[property]) === highestValue;
+    });
   }
 
   render() {
-    return <Result data={this.state.result} />;
+    return <Result data={this.state.data} />;
   }
 }
 
