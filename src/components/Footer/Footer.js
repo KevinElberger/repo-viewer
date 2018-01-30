@@ -6,7 +6,7 @@ class Footer extends Component {
         return (
             <div className="footer">
                 <p className="small">
-                    Developed By Kevin Elberger | 
+                    Developed By Kevin Elberger 
                 </p>
                 <a 
                     className="github"

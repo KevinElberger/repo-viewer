@@ -5,7 +5,7 @@ import Footer from '../../components/Footer/Footer';
 import SearchForm from '../../components/SearchForm/SearchForm';
 import ResultContainer from '../../components/ResultContainer/ResultContainer';
 
-class Home extends Component {
+export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,12 +21,12 @@ class Home extends Component {
   }
 
   getApiData(user) {
-    const apiUserReposUrl = `https://api.github.com/users/${user}/repos`;
+    const API_USER_REPO_URL = `https://api.github.com/users/${user}/repos`;
 
-    fetch(apiUserReposUrl)
-      .then((response) => response.json())
+    fetch(API_USER_REPO_URL)
+      .then(response => response.json())
       .then((data) => {
-        if (data.length > 0) {
+        if (data && data.length > 0) {
           this.calculateRepoStatistics(user, data);
         } else {
           this.setState({ loading: false });
@@ -36,10 +36,10 @@ class Home extends Component {
   }
 
   calculateRepoStatistics(user, repoList) {
-    const apiEventsUrl = `https://api.github.com/users/${user}/events`;
+    const API_EVENTS_URL = `https://api.github.com/users/${user}/events`;
 
-    fetch(apiEventsUrl)
-      .then((response) => response.json())
+    fetch(API_EVENTS_URL)
+      .then(response => response.json())
       .then((events) => {
         this.setState({
           loading: false,
@@ -73,6 +73,9 @@ class Home extends Component {
   render() {
     const loading = this.state.loading;
     const hasData = Object.keys(this.state.data).length > 0;
+    const result = <ResultContainer data={this.state.data} />;
+    const search = <SearchForm onSubmit={this.handleSubmit} />;
+    const renderedComponent = loading ? <Loader /> : hasData ? result : search;
 
     return (
       <div className="home">
@@ -81,15 +84,9 @@ class Home extends Component {
             <h1 className="title">Repo Viewer</h1>
           </a>
         </div>
-        {
-          loading ? <Loader /> : 
-          hasData ? <ResultContainer data={this.state.data} /> : 
-          <SearchForm onSubmit={this.handleSubmit} />
-        }
+        { renderedComponent }
         <Footer />
       </div>
     );
   }
 }
-
-export default Home;

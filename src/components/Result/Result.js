@@ -15,7 +15,7 @@ class Result extends Component {
     const profileUrl = this.props.data.profileUrl;
     const mostStars = {
       panelName: 'most-starred',
-      resultText: 'Most Starred',
+      resultText: 'Most Starred Repo',
       footerText: 'Stars',
       detailName: 'most-starred-detail',
       link: this.props.data.mostStars.svn_url,
@@ -28,7 +28,7 @@ class Result extends Component {
     };
     const mostRecent = {
       panelName: 'most-recent',
-      resultText: 'Most Recent',
+      resultText: 'Most Recent Repo',
       footerText: 'Days Ago',
       detailName: 'most-recent-detail',
       link: this.props.data.mostRecent.repo.svn_url,
@@ -40,7 +40,7 @@ class Result extends Component {
     };
     const biggestSize = {
       panelName: 'largest-size',
-      resultText: 'Largest Size',
+      resultText: 'Largest Repo',
       detailName: 'largest-size-detail',
       link: this.props.data.biggestSize.repoWithLargestSize.svn_url,
       detailTitle: this.props.data.biggestSize.repoWithLargestSize.name,
@@ -52,7 +52,7 @@ class Result extends Component {
     };
     const mostIssues = {
       panelName: 'most-issues',
-      resultText: 'Most Issues',
+      resultText: 'Repo With Most Open Issues',
       footerText: 'Open Issues',
       detailName: 'most-issues-detail',
       link: this.props.data.mostIssues.svn_url,

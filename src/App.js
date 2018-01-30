@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Home from './views/Home/Home';
 
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,6 +10,7 @@ class App extends Component {
     };
     this.resize = this.resize.bind(this);
   }
+ 
   resize() {
     this.setState({
       resize: !this.state.resize
@@ -28,5 +29,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;
