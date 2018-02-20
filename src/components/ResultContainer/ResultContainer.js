@@ -45,7 +45,6 @@ class ResultContainer extends Component {
   getRepoWithLargestSize() {
     const nextByteSize = 1024;
     const repoWithLargestSize = this.getRepoWithHighestValue('size');
-    console.log(repoWithLargestSize);
     const megaBytes = Number((repoWithLargestSize.size / nextByteSize).toFixed(0));
     const gigaBytes = Number((megaBytes / nextByteSize).toFixed(0)); 
     let type = 'KB';

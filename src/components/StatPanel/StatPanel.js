@@ -19,14 +19,14 @@ class StatPanel extends Component {
 
   render() {
     const detailClassName = this.state.active ? 
-      `${this.props.data.detailName} detail active` : 
-      `${this.props.data.detailName} detail`;
+      `${this.props.detailName} detail active` : 
+      `${this.props.detailName} detail`;
 
     return (
-      <div className={this.props.data.panelName} onClick={this.handleClick}>
+      <div className={this.props.panelName} onClick={this.handleClick}>
         <div className="panel-wrap">
           <p className="result-text">
-            {this.props.data.resultText}
+            {this.props.resultText}
           </p>
           <div className="wrap">
             <figure className="chart" data-percent="100">
@@ -43,26 +43,26 @@ class StatPanel extends Component {
             <p className="stat">
               <CountUp
                 start={0}
-                end={Number(this.props.data.panelNumber)}
+                end={Number(this.props.panelNumber)}
                 duration={1.5}
               />
             </p>
           </div>
           <p className="result-footer-text">
-            {this.props.data.footerText}
+            {this.props.footerText}
           </p>
         </div>
         <div className={detailClassName}>
           <p className="detail-title">
-            {this.props.data.detailTitle}
+            {this.props.detailTitle}
           </p>
           <div className="detail-stats">
-            <a href={this.props.data.link} target="_blank">
+            <a href={this.props.link} target="_blank">
               <i className="fa fa-github-alt repo-github" aria-hidden="true"></i>
             </a>
           </div>
           <p className="detail-description">
-            {this.props.data.description}
+            {this.props.description}
           </p>
         </div>
       </div>
