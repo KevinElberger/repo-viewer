@@ -16,12 +16,17 @@ it('should have the correct number of divs', () => {
   expect(wrapper.find('div').length).toBe(2);
 });
 
-it('should have the div with the container classname', () => {
+it('should initialize with a div with the container classname', () => {
   const wrapper = shallow(<App />);
   expect(wrapper.find('.container').length).toBe(1);
 });
 
-it('should have the container-expand class if resize is true', () => {
+it ('should initialize without a div with the expand class', () => {
+  const wrapper = shallow(<App />);
+  expect(wrapper.find('.expand').length).toBe(0);
+});
+
+it('should have the expand class if resize is true', () => {
   const wrapper = shallow(<App />);
   wrapper.setState({ resize: true });
   expect(wrapper.find('.expand').length).toBe(1);
