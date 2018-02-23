@@ -1,6 +1,12 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Home from './Home';
+import user from '../../__mocks__/user';
+
+const fetchMock = require('fetch-mock');
+
+// Return user data for any fetch request
+fetchMock.get('*', user);
 
 it('renders without crashing', () => {
   shallow(<Home />);
@@ -17,3 +23,5 @@ it('should render the title', () => {
   const title = <h1 className="title">Repo Viewer</h1>;
   expect(wrapper.contains(title)).toEqual(true);
 });
+
+it()

@@ -32,7 +32,7 @@ export default class Home extends Component {
           this.setState({ loading: false });
         }
       })
-      .catch((error) => console.log(error));
+      .catch(error => console.log(error));
   }
 
   calculateRepoStatistics(user, repoList) {
