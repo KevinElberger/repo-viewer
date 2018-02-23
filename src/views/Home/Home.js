@@ -17,17 +17,20 @@ export default class Home extends Component {
 
   handleSubmit(user) {
     this.setState({ loading: true });
-    this.getApiData(user);
+    this.getApiData(user)
+      .then((data) => { 
+        this.calculateRepoStatistics(user, data) 
+      });
   }
 
   getApiData(user) {
     const API_USER_REPO_URL = `https://api.github.com/users/${user}/repos`;
 
-    fetch(API_USER_REPO_URL)
+    return fetch(API_USER_REPO_URL)
       .then(response => response.json())
       .then((data) => {
         if (data && data.length > 0) {
-          this.calculateRepoStatistics(user, data);
+          return data;
         } else {
           this.setState({ loading: false });
         }
@@ -38,7 +41,7 @@ export default class Home extends Component {
   calculateRepoStatistics(user, repoList) {
     const API_EVENTS_URL = `https://api.github.com/users/${user}/events`;
 
-    fetch(API_EVENTS_URL)
+    return fetch(API_EVENTS_URL)
       .then(response => response.json())
       .then((events) => {
         this.setState({
@@ -50,7 +53,7 @@ export default class Home extends Component {
         });
         this.props.resize();
       })
-      .catch((error) => console.log(error));
+      .catch(error => console.log(error));
   }
 
   getTotalCommits(user, events) {
