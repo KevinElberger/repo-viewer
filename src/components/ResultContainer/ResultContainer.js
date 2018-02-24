@@ -66,6 +66,8 @@ class ResultContainer extends Component {
   }
 
   getRepoWithHighestValue(property) {
+    if (!property || typeof property !== 'string') return;
+
     const highestValue = Math.max.apply(Math, this.props.data.repos.map((repo) => {
       return repo[property];
     }));
